@@ -1,0 +1,5 @@
+{
+  "directory": ["./src/controllers/missions", "./src/controllers/profile"],
+  "exclude": ["__mock__", "__mocks__", ".spec.ts"],
+  "delete": true
+}
