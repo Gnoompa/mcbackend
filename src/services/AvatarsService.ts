@@ -30,13 +30,13 @@ export class AvatarsService {
       } catch (error) {
         this.logger.error("avatars.syncOnChainToPostgresLoop error", error.message);
       }
-      await sleep(1000);
+      await sleep(5000);
     }
   }
 
   async syncOnChainToPostgres() {
     const allAvatars = await this.onChainRepo.getAllAvatars();
-    console.log("all avatars", allAvatars);
+    // console.log("all avatars", allAvatars);
 
     await this.avatarsRepo.upsertAvatarsData(allAvatars);
 

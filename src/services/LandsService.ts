@@ -44,7 +44,7 @@ export class LandsService implements BeforeInit {
       } catch (error) {
         this.logger.error("syncOnChainToPostgresLoop error", error.message);
       }
-      await sleep(1000);
+      await sleep(5000);
     }
   }
 
