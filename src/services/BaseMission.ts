@@ -90,7 +90,7 @@ export abstract class BaseMission<T> {
 
     while (await this.landsService.isLandLockedForMissionStart(landId)) {
       this.logger.info({ message: "mission:land-locked", missionId, userData: { address, avatarId, landId } });
-      await sleep(1000);
+      await sleep(5000);
     }
     this.landsService.lockLandForMissionStart(landId);
 

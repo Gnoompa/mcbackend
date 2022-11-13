@@ -8,7 +8,7 @@ import cookieParser from "cookie-parser";
 import methodOverride from "method-override";
 import cors from "cors";
 import "@tsed/ajv";
-import "@tsed/swagger";
+// import "@tsed/swagger";
 import { config } from "./config";
 import * as missions from "./controllers/missions";
 import * as profile from "./controllers/profile";
@@ -43,12 +43,12 @@ import { ErrorFilter } from "./interceptors/ExceptionFilter";
     }
   },
   exclude: ["**/*.spec.ts"],
-  swagger: [
-    {
-      path: "/v2/docs",
-      specVersion: "2.0" // by default
-    }
-  ]
+  // swagger: [
+  //   {
+  //     path: "/v2/docs",
+  //     specVersion: "2.0" // by default
+  //   }
+  // ]
 })
 export class Server {
   @Inject()

@@ -12,7 +12,7 @@ async function bootstrap() {
       process.exit();
     });
   } catch (error) {
-    $log.error({ event: "SERVER_BOOTSTRAP_ERROR", error });
+    $log.error({ event: "SERVER_BOOTSTRAP_ERROR", error: error.message });
   }
 }
 
