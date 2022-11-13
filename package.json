@@ -6,7 +6,7 @@
     "build": "yarn run barrels && yarn run tsc --project tsconfig.compile.json",
     "barrels": "barrelsby --config .barrelsby.json",
     "start": "yarn run barrels && tsnd --inspect=127.0.0.1:9223 --ignore-watch node_modules --respawn --transpile-only -r tsconfig-paths/register src/index.ts",
-    "start:prod": "cross-env NODE_ENV=production node dist/index.js",
+    "start:prod": "cross-env NODE_ENV=production node dist/src/index.js",
     "test": "yarn run test:lint && yarn run test:coverage",
     "test:unit": "cross-env NODE_ENV=test jest",
     "test:coverage": "yarn run test:unit",

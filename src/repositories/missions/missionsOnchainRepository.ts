@@ -1,7 +1,8 @@
 import { Avatar } from "./../../models/missions/common/avatar.model";
 import { Land } from "./../../models/missions/common/land.model";
 import { ONCHAIN_DATA_SOURCE } from "../../datasources/onchain";
-import { Inject, Injectable, Logger, PlatformCache } from "@tsed/common";
+import { Inject, Injectable, Logger } from "@tsed/common";
+import { PlatformCache } from "@tsed/platform-cache";
 import { BigNumber } from "ethers";
 
 export enum RARITY {
