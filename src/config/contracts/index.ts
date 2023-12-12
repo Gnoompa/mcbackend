@@ -68,7 +68,7 @@ export const onchain_config: ONCHAIN_CONFIG = {
       tokenName: "CLNY"
     },
     mumbai: {
-      rpc: "https://matic-mumbai.chainstacklabs.com",
+      rpc: process.env.MUMBAI_RPC_URL || "https://matic-mumbai.chainstacklabs.com",
       contracts: {
         MSN: process.env.MISSION_MANAGER!,
         GM: process.env.GAME_MANAGER!,
