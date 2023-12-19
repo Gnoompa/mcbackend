@@ -19,7 +19,7 @@ ARG NODE_VERSION=16.13.1
 FROM node:${NODE_VERSION}-alpine as build
 WORKDIR /opt
 
-COPY package.json yarn.lock tsconfig.json tsconfig.compile.json .barrelsby.json ./
+COPY package.json yarn.lock tsconfig.json tsconfig.compile.json .barrelsby.json knexfile.ts ./
 
 RUN yarn install --pure-lockfile
 

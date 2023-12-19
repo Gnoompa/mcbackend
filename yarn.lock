@@ -921,6 +921,16 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
+"@noble/hashes@~1.2.0", "@noble/hashes@1.2.0":
+  "integrity" "sha512-FZfhjEDbT5GRswV3C6uvLPHMiVD6lQBmpoX5+eSiPaMTXte/IKqI5dykDxzZB/WBeK/CDuQRBWarPdi3FNY2zQ=="
+  "resolved" "https://registry.npmjs.org/@noble/hashes/-/hashes-1.2.0.tgz"
+  "version" "1.2.0"
+
+"@noble/secp256k1@~1.7.0", "@noble/secp256k1@1.7.1":
+  "integrity" "sha512-hOUk6AyBFmqVrv7k5WAw/LpszxVbj9gGN4JRkIX52fdFAj1UA61KXmZDvqVEm+pOyec3+fIeZB02LYa/pWOArw=="
+  "resolved" "https://registry.npmjs.org/@noble/secp256k1/-/secp256k1-1.7.1.tgz"
+  "version" "1.7.1"
+
 "@nodelib/fs.scandir@2.1.5":
   "integrity" "sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g=="
   "resolved" "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz"
@@ -941,6 +951,14 @@
   dependencies:
     "@nodelib/fs.scandir" "2.1.5"
     "fastq" "^1.6.0"
+
+"@openzeppelin/merkle-tree@^1.0.5":
+  "integrity" "sha512-JkwG2ysdHeIphrScNxYagPy6jZeNONgDRyqU6lbFgE8HKCZFSkcP8r6AjZs+3HZk4uRNV0kNBBzuWhKQ3YV7Kw=="
+  "resolved" "https://registry.npmjs.org/@openzeppelin/merkle-tree/-/merkle-tree-1.0.5.tgz"
+  "version" "1.0.5"
+  dependencies:
+    "@ethersproject/abi" "^5.7.0"
+    "ethereum-cryptography" "^1.1.2"
 
 "@redis/bloom@1.0.2":
   "integrity" "sha512-EBw7Ag1hPgFzdznK2PBblc1kdlj5B5Cw3XwI9/oG7tSn85/HKy3X9xHy/8tm/eNXJYHLXHJL/pkwBpFMVVefkw=="
@@ -975,6 +993,28 @@
   "integrity" "sha512-OFp0q4SGrTH0Mruf6oFsHGea58u8vS/iI5+NpYdicaM+7BgqBZH8FFvNZ8rYYLrUO/QRqMq72NpXmxLVNcdmjA=="
   "resolved" "https://registry.npmjs.org/@redis/time-series/-/time-series-1.0.3.tgz"
   "version" "1.0.3"
+
+"@scure/base@~1.1.0":
+  "integrity" "sha512-Brj9FiG2W1MRQSTB212YVPRrcbjkv48FoZi/u4l/zds/ieRrqsh7aUf6CLwkAq61oKXr/ZlTzlY66gLIj3TFTQ=="
+  "resolved" "https://registry.npmjs.org/@scure/base/-/base-1.1.5.tgz"
+  "version" "1.1.5"
+
+"@scure/bip32@1.1.5":
+  "integrity" "sha512-XyNh1rB0SkEqd3tXcXMi+Xe1fvg+kUIcoRIEujP1Jgv7DqW2r9lg3Ah0NkFaCs9sTkQAQA8kw7xiRXzENi9Rtw=="
+  "resolved" "https://registry.npmjs.org/@scure/bip32/-/bip32-1.1.5.tgz"
+  "version" "1.1.5"
+  dependencies:
+    "@noble/hashes" "~1.2.0"
+    "@noble/secp256k1" "~1.7.0"
+    "@scure/base" "~1.1.0"
+
+"@scure/bip39@1.1.1":
+  "integrity" "sha512-t+wDck2rVkh65Hmv280fYdVdY25J9YeEUIgn2LG1WM6gxFkGzcksoDiUkWVpVp3Oex9xGC68JU2dSbUfwZ2jPg=="
+  "resolved" "https://registry.npmjs.org/@scure/bip39/-/bip39-1.1.1.tgz"
+  "version" "1.1.1"
+  dependencies:
+    "@noble/hashes" "~1.2.0"
+    "@scure/base" "~1.1.0"
 
 "@sinonjs/commons@^1.7.0":
   "integrity" "sha512-xkNcLAn/wZaX14RPlwizcKicDk9G3F8m2nU3L7Ukm5zBgTwiT0wsoFAHx9Jq56fJA1z/7uKGtCRu16sOUCLIHQ=="
@@ -2363,6 +2403,31 @@
   dependencies:
     "cssom" "~0.3.6"
 
+"csv-generate@^4.3.1":
+  "integrity" "sha512-7YeeJq+44/I/O5N2sr2qBMcHZXhpfe38eh7DOFxyMtYO+Pir7kIfgFkW5MPksqKqqR6+/wX7UGoZm1Ot11151w=="
+  "resolved" "https://registry.npmjs.org/csv-generate/-/csv-generate-4.3.1.tgz"
+  "version" "4.3.1"
+
+"csv-parse@^5.5.3":
+  "integrity" "sha512-v0KW6C0qlZzoGjk6u5tLmVfyZxNgPGXZsWTXshpAgKVGmGXzaVWGdlCFxNx5iuzcXT/oJN1HHM9DZKwtAtYa+A=="
+  "resolved" "https://registry.npmjs.org/csv-parse/-/csv-parse-5.5.3.tgz"
+  "version" "5.5.3"
+
+"csv-stringify@^6.4.5":
+  "integrity" "sha512-SPu1Vnh8U5EnzpNOi1NDBL5jU5Rx7DVHr15DNg9LXDTAbQlAVAmEbVt16wZvEW9Fu9Qt4Ji8kmeCJ2B1+4rFTQ=="
+  "resolved" "https://registry.npmjs.org/csv-stringify/-/csv-stringify-6.4.5.tgz"
+  "version" "6.4.5"
+
+"csv@^6.3.6":
+  "integrity" "sha512-jsEsX2HhGp7xiwrJu5srQavKsh+HUJcCi78Ar3m4jlmFKRoTkkMy7ZZPP+LnQChmaztW+uj44oyfMb59daAs/Q=="
+  "resolved" "https://registry.npmjs.org/csv/-/csv-6.3.6.tgz"
+  "version" "6.3.6"
+  dependencies:
+    "csv-generate" "^4.3.1"
+    "csv-parse" "^5.5.3"
+    "csv-stringify" "^6.4.5"
+    "stream-transform" "^3.3.0"
+
 "dashdash@^1.12.0":
   "integrity" "sha512-jRFi8UDGo6j+odZiEpjazZaWqEal3w/basFjQHQEwVtZJGDpxbH1MeYluwCS8Xq5wmLJooDlMgvVarmWfGM44g=="
   "resolved" "https://registry.npmjs.org/dashdash/-/dashdash-1.14.1.tgz"
@@ -2771,6 +2836,16 @@
   "resolved" "https://registry.npmjs.org/etag/-/etag-1.8.1.tgz"
   "version" "1.8.1"
 
+"ethereum-cryptography@^1.1.2":
+  "integrity" "sha512-6yFQC9b5ug6/17CQpCyE3k9eKBMdhyVjzUy1WkiuY/E4vj/SXDBbCw8QEIaXqf0Mf2SnY6RmpDcwlUmBSS0EJw=="
+  "resolved" "https://registry.npmjs.org/ethereum-cryptography/-/ethereum-cryptography-1.2.0.tgz"
+  "version" "1.2.0"
+  dependencies:
+    "@noble/hashes" "1.2.0"
+    "@noble/secp256k1" "1.7.1"
+    "@scure/bip32" "1.1.5"
+    "@scure/bip39" "1.1.1"
+
 "ethers@^5.6.4":
   "integrity" "sha512-5Xhzp2ZQRi0Em+0OkOcRHxPzCfoBfgtOQA+RUylSkuHbhTEaQklnYi2hsWbRgs3ztJsXVXd9VKBcO1ScWL8YfA=="
   "resolved" "https://registry.npmjs.org/ethers/-/ethers-5.7.0.tgz"
@@ -3113,11 +3188,6 @@
   "integrity" "sha512-dsKNQNdj6xA3T+QlADDA7mOSlX0qiMINjn0cgr+eGHGsbSHzTabcIogz2+p/iqP1Xs6EP/sS2SbqH+brGTbq0g=="
   "resolved" "https://registry.npmjs.org/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz"
   "version" "1.0.1"
-
-"g@^2.0.1":
-  "integrity" "sha512-Fi6Ng5fZ/ANLQ15H11hCe+09sgUoNvDEBevVgx3KoYOhsH5iLNPn54hx0jPZ+3oSWr+xajnp2Qau9VmPsc7hTA=="
-  "resolved" "https://registry.npmjs.org/g/-/g-2.0.1.tgz"
-  "version" "2.0.1"
 
 "generic-pool@3.8.2":
   "integrity" "sha512-nGToKy6p3PAbYQ7p1UlWl6vSPwfwU6TMSWK7TTu+WUY4ZjyZQGniGGt2oNVvyNSpyZYSB43zMXVLcBm08MTMkg=="
@@ -5305,6 +5375,11 @@
   "resolved" "https://registry.npmjs.org/statuses/-/statuses-2.0.1.tgz"
   "version" "2.0.1"
 
+"stream-transform@^3.3.0":
+  "integrity" "sha512-pG1NeDdmErNYKtvTpFayrEueAmL0xVU5wd22V7InGnatl4Ocq3HY7dcXIKj629kXvYQvglCC7CeDIGAlx1RNGA=="
+  "resolved" "https://registry.npmjs.org/stream-transform/-/stream-transform-3.3.0.tgz"
+  "version" "3.3.0"
+
 "streamroller@3.0.6":
   "integrity" "sha512-Qz32plKq/MZywYyhEatxyYc8vs994Gz0Hu2MSYXXLD233UyPeIeRBZARIIGwFer4Mdb8r3Y2UqKkgyDghM6QCg=="
   "resolved" "https://registry.npmjs.org/streamroller/-/streamroller-3.0.6.tgz"
@@ -5962,11 +6037,6 @@
     "string-width" "^4.2.3"
     "y18n" "^5.0.5"
     "yargs-parser" "^21.0.0"
-
-"yarn@^1.22.21":
-  "integrity" "sha512-ynXaJsADJ9JiZ84zU25XkPGOvVMmZ5b7tmTSpKURYwgELdjucAOydqIOrOfTxVYcNXe91xvLZwcRh68SR3liCg=="
-  "resolved" "https://registry.npmjs.org/yarn/-/yarn-1.22.21.tgz"
-  "version" "1.22.21"
 
 "yn@3.1.1":
   "integrity" "sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q=="

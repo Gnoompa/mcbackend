@@ -1,17 +1,17 @@
+import { Controller, Inject } from "@tsed/di";
+import { UseBefore } from "@tsed/platform-middlewares";
+import { BodyParams, QueryParams } from "@tsed/platform-params";
+import { Get, Post, Returns, Summary } from "@tsed/schema";
+import { AllowlistService } from "src/services/AllowlistService";
+import { SetProfilePayloadModel } from "../../models/profiles/dto/requests/setProfilePayloadModel";
+import { GetProfileResponse } from "../../models/profiles/dto/responses/getProfileResponse";
+import { ProfilesService } from "../../services/ProfilesService";
+import { CheckSignatureTimestamp } from "./../../middleware/checkSignatureTimestamp";
+import { VerifySignedEthMessage } from "./../../middleware/verifySignedEthMessage";
 import { GetAvatarsResponse } from "./../../models/profiles/dto/responses/getAvatarsResponse";
 import { GetLandsResponse } from "./../../models/profiles/dto/responses/getLandsResponse";
-import { AvatarCrosschain } from "./../../models/missions/common/avatar.model";
-import { LandsService } from "./../../services/LandsService";
 import { AvatarsService } from "./../../services/AvatarsService";
-import { VerifySignedEthMessage } from "./../../middleware/verifySignedEthMessage";
-import { CheckSignatureTimestamp } from "./../../middleware/checkSignatureTimestamp";
-import { GetProfileResponse } from "../../models/profiles/dto/responses/getProfileResponse";
-import { SetProfilePayloadModel } from "../../models/profiles/dto/requests/setProfilePayloadModel";
-import { ProfilesService } from "../../services/ProfilesService";
-import { Get, Post, Returns, Summary } from "@tsed/schema";
-import { Controller, Inject } from "@tsed/di";
-import { BodyParams, QueryParams } from "@tsed/platform-params";
-import { UseBefore } from "@tsed/platform-middlewares";
+import { LandsService } from "./../../services/LandsService";
 
 @Controller("/")
 export class ProfilesCtrl {
@@ -23,6 +23,9 @@ export class ProfilesCtrl {
 
   @Inject(LandsService)
   private landsService: LandsService;
+
+  @Inject(AllowlistService)
+  private allowlistService: AllowlistService;
 
   @Post("/profile")
   @Summary("Set profile data")
@@ -56,5 +59,19 @@ export class ProfilesCtrl {
   async getLands(@QueryParams("address") address: string) {
     const lands = await this.landsService.getAllLandsCrosschain(address);
     return lands;
+  }
+
+  @Get("/isInAllowlist/:allowlistId/:merkleTreeLeaf")
+  @Summary("Get if allowlisted for particular allowlist")
+  @Returns(200, Number)
+  async getIsInAllowlist(@QueryParams("allowlistId") allowlistId: number, @QueryParams("merkleTreeLeaf") merkleTreeLeaf: string) {
+    return await this.allowlistService.getIsInAllowlist(allowlistId, merkleTreeLeaf);
+  }
+
+  @Get("/allowlistProof/:allowlistId/:merkleTreeLeaf")
+  @Summary("Get Merkle Tree proof for a particular allowlist")
+  @Returns(200, String)
+  async getAllowlistProof(@QueryParams("allowlistId") allowlistId: number, @QueryParams("merkleTreeLeaf") merkleTreeLeaf: string) {
+    return await this.allowlistService.getAllowlistProof(allowlistId, merkleTreeLeaf);
   }
 }
