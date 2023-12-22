@@ -2,8 +2,20 @@ import dotenv from "dotenv";
 dotenv.config();
 
 // Update with your config settings.
-const config  = {
+const config = {
   development: {
+    client: "postgresql",
+    connection: process.env.POSTGRES,
+    pool: {
+      min: 2,
+      max: 10
+    },
+    migrations: {
+      tableName: "knex_migrations"
+    }
+  },
+
+  test: {
     client: "postgresql",
     connection: process.env.POSTGRES,
     pool: {

@@ -1,12 +1,12 @@
-import { LandsService } from "./LandsService";
+import { Configuration, Inject, Logger } from "@tsed/common";
+import { BadRequest } from "@tsed/exceptions";
 import { Mission } from "../models/missions/common/mission.model";
 import { MissionCompleteResponse } from "../models/missions/common/responses/missionCompleteServerResponseModel";
 import { OnChainRepository } from "../repositories/missions/missionsOnchainRepository";
-import { Configuration, Inject, Logger } from "@tsed/common";
-import { BadRequest } from "@tsed/exceptions";
 import { MissionsPostgresRepository } from "../repositories/missions/missionsPostgresRepository";
-import { RewardsService } from "./RewardsService";
 import { sleep } from "../utils/sleep";
+import { LandsService } from "./LandsService";
+import { RewardsService } from "./RewardsService";
 
 // @Module()
 export abstract class BaseMission<T> {
@@ -30,13 +30,13 @@ export abstract class BaseMission<T> {
   protected abstract missionId: number;
 
   async $onInit() {
-    setInterval(() => {
-      this.removeOldMissions();
-      this.checkIfStartedMissionsHasBeenFailed().catch((error) => {
-        this.logger.error("error in startFailedMissionsEndlessLoops:" + error.message);
-        throw error;
-      });
-    }, 5000 + Math.random() * 1000);
+    // setInterval(() => {
+    //   this.removeOldMissions();
+    //   this.checkIfStartedMissionsHasBeenFailed().catch((error) => {
+    //     this.logger.error("error in startFailedMissionsEndlessLoops:" + error.message);
+    //     throw error;
+    //   });
+    // }, 5000 + Math.random() * 1000);
   }
 
   async removeOldMissions() {

@@ -1,7 +1,7 @@
-import { sleep } from "../utils/sleep";
-import { OnChainRepository } from "../repositories/missions/missionsOnchainRepository";
 import { Configuration, Inject, Logger, Module } from "@tsed/common";
 import { AvatarsPostgresRepository } from "../repositories/missions/avatarsPostgresRepository";
+import { OnChainRepository } from "../repositories/missions/missionsOnchainRepository";
+import { sleep } from "../utils/sleep";
 
 @Module()
 export class AvatarsService {
@@ -35,8 +35,7 @@ export class AvatarsService {
   }
 
   async syncOnChainToPostgres() {
-    const allAvatars = await this.onChainRepo.getAllAvatars();
-    // console.log("all avatars", allAvatars);
+    const allAvatars = await this.onChainRepo.getAllAvatars();    
 
     await this.avatarsRepo.upsertAvatarsData(allAvatars);
 

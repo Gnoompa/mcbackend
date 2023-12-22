@@ -1,20 +1,20 @@
-import { join } from "path";
-import { Configuration, Inject } from "@tsed/di";
+import "@tsed/ajv";
 import { PlatformApplication } from "@tsed/common";
+import { Configuration, Inject } from "@tsed/di";
 import "@tsed/platform-express"; // /!\ keep this import
 import bodyParser from "body-parser";
 import compress from "compression";
 import cookieParser from "cookie-parser";
-import methodOverride from "method-override";
 import cors from "cors";
-import "@tsed/ajv";
+import methodOverride from "method-override";
+import { join } from "path";
 // import "@tsed/swagger";
 import { config } from "./config";
+import * as allowlist from "./controllers/allowlist/allowlists";
 import * as missions from "./controllers/missions";
 import * as profile from "./controllers/profile";
 import { AvatarsService } from "./services/AvatarsService";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { ErrorFilter } from "./interceptors/ExceptionFilter";
 
 @Configuration({
   ...config,
@@ -24,7 +24,8 @@ import { ErrorFilter } from "./interceptors/ExceptionFilter";
   componentsScan: false,
   mount: {
     "/missions": [...Object.values(missions)],
-    "/profile": [...Object.values(profile)]
+    "/profile": [...Object.values(profile)],
+    "/allowlist": [...Object.values(allowlist)]
   },
   middlewares: [
     cors(),
@@ -42,7 +43,7 @@ import { ErrorFilter } from "./interceptors/ExceptionFilter";
       ejs: "ejs"
     }
   },
-  exclude: ["**/*.spec.ts"],
+  exclude: ["**/*.spec.ts"]
   // swagger: [
   //   {
   //     path: "/v2/docs",
