@@ -14,6 +14,7 @@ import * as allowlist from "./controllers/allowlist/allowlists";
 import * as missions from "./controllers/missions";
 import * as profile from "./controllers/profile";
 import { AvatarsService } from "./services/AvatarsService";
+import { StatsService } from "./services/StatsService";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
 @Configuration({
@@ -57,6 +58,9 @@ export class Server {
 
   @Inject()
   protected avatarsService: AvatarsService;
+
+  @Inject()
+  protected statsService: StatsService;
 
   @Configuration()
   protected settings: Configuration;

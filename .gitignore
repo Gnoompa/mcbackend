@@ -54,5 +54,6 @@ typings/
 ecosystem.config.js
 
 .env.
+.env
 
 db

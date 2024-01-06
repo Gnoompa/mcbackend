@@ -1,23 +1,36 @@
-'use strict'
+"use strict";
 
-const path = require('path')
-const defaultLogFile = path.join(__dirname, '/logs/project-server.log')
+const path = require("path");
+const defaultLogFile = path.join(__dirname, "/logs/project-server.log");
+// const cronLogFile = path.join(__dirname, "/logs/cron.log");
 
 module.exports = {
-  'apps': [
+  apps: [
     {
       name: "api",
-      'script': `${process.env.WORKDIR}/dist/src/index.js`,
-      'cwd': process.env.WORKDIR,
+      script: `${process.env.WORKDIR}/dist/src/index.js`,
+      cwd: process.env.WORKDIR,
       node_args: process.env.NODE_ARGS || "--max_old_space_size=1800",
       exec_mode: "cluster",
       instances: process.env.NODE_ENV === "test" ? 1 : process.env.NB_INSTANCES || 2,
       autorestart: true,
       max_memory_restart: process.env.MAX_MEMORY_RESTART || "750M",
-      'out_file': defaultLogFile,
-      'error_file': defaultLogFile,
-      'merge_logs': true,
-      'kill_timeout': 30000,
-    }
+      out_file: defaultLogFile,
+      error_file: defaultLogFile,
+      merge_logs: true,
+      kill_timeout: 30000
+    },
+    // {
+    //   name: "cron",
+    //   script: `${process.env.WORKDIR}/dist/crons/index.js`,
+    //   cwd: process.env.WORKDIR,
+    //   instances: 1,
+    //   autorestart: true,
+    //   max_memory_restart: process.env.MAX_MEMORY_RESTART || "750M",
+    //   out_file: cronLogFile,
+    //   error_file: cronLogFile,
+    //   merge_logs: true,
+    //   kill_timeout: 30000
+    // }
   ]
-}
+};

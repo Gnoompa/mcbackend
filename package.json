@@ -13,7 +13,7 @@
     "test:lint": "eslint '**/*.{ts,js}'",
     "test:lint:fix": "eslint '**/*.{ts,js}' --fix",
     "prettier": "prettier '**/*.{ts,js,json,md,yml,yaml}' --write",
-    "init": "knex migrate:latest --esm && knex seed:run --esm && pm2-runtime start processes.config.js --env test"
+    "init": "node node_modules/ts-node/dist/bin.js node_modules/knex/bin/cli migrate:latest --esm && node node_modules/ts-node/dist/bin.js node_modules/knex/bin/cli seed:run --esm && pm2-runtime start processes.config.js --env test"
   },
   "dependencies": {
     "@openzeppelin/merkle-tree": "^1.0.5",
@@ -45,6 +45,7 @@
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
+    "cron": "^3.1.6",
     "cross-env": "^7.0.3",
     "csv": "^6.3.6",
     "csv-parse": "^5.5.3",
@@ -60,6 +61,7 @@
     "node-loggly-bulk": "^3.0.1",
     "pg": "^8.7.3",
     "redis": "^4.0.6",
+    "ts-node": "^10.7.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
