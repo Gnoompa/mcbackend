@@ -1,18 +1,19 @@
 import { Knex } from "knex";
 
+export const SCOPE_ID = "stats";
+
 export enum StatType {
   Shares
 }
 
 export type Stat = {
   type: StatType;
+  source: string;
   userId: string;
-  snapshotValue: string;
-  currentValue: string;
+  oldValue: string;
+  newValue: string;
   createdAt: string;
   updatedAt: string;
-  updatedAtBlockNumber: number;
-  chainId: number;
 };
 
 export type StatModel = Stat;
@@ -22,12 +23,11 @@ export const StatModel = (knex: Knex) => knex<StatModel>("Stats");
 StatModel.getDefault = (type: StatType): Stat => {
   return {
     type,
+    source: "",
     userId: "",
-    snapshotValue: "",
-    currentValue: "",
+    oldValue: "",
+    newValue: "",
     createdAt: "",
-    updatedAt: "",
-    updatedAtBlockNumber: 0,
-    chainId: 0
+    updatedAt: ""
   };
 };

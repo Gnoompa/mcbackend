@@ -2,7 +2,7 @@
 
 const path = require("path");
 const defaultLogFile = path.join(__dirname, "/logs/project-server.log");
-// const cronLogFile = path.join(__dirname, "/logs/cron.log");
+const cronLogFile = path.join(__dirname, "/logs/cron.log");
 
 module.exports = {
   apps: [
@@ -19,18 +19,6 @@ module.exports = {
       error_file: defaultLogFile,
       merge_logs: true,
       kill_timeout: 30000
-    },
-    // {
-    //   name: "cron",
-    //   script: `${process.env.WORKDIR}/dist/crons/index.js`,
-    //   cwd: process.env.WORKDIR,
-    //   instances: 1,
-    //   autorestart: true,
-    //   max_memory_restart: process.env.MAX_MEMORY_RESTART || "750M",
-    //   out_file: cronLogFile,
-    //   error_file: cronLogFile,
-    //   merge_logs: true,
-    //   kill_timeout: 30000
-    // }
+    }
   ]
 };

@@ -1,3 +1,4 @@
+import { SnapshotPayloadModel } from "src/models/stats/dto/requests/snapshotPayloadModel";
 import { POSTGRES_DATA_SOURCE } from "../../datasources/Postgres";
 import { Stat, StatModel } from "../../models/stats/model";
 
@@ -19,13 +20,33 @@ export class StatsPostgresRepository {
 
   async setStats() {
     // const statModel: StatModel = {};
-
     // await StatModel(this.postgresClient).insert(statModel).onConflict(["address"]).merge();
   }
 
-  async snapshot(): Promise<boolean> {
-    await StatModel(this.postgresClient).first();
+  async snapshotStats(stats: SnapshotPayloadModel[]) {
+    await this.postgresClient.schema.dropTableIfExists("tmp_user_stats");
+    await this.postgresClient.schema.createTableLike("tmp_user_stats", "user_stats");
 
-    return true;
+    return this.postgresClient
+      .transaction(async (tx) => {
+        tx.table("tmp_user_stats").insert(stats.map((stat) => ({ ...stat, newValue: stat.valueDiff })));
+
+        tx.table("user_stats").insert(
+          tx
+            .select([
+              "user_stats.type",
+              "user_stats.source",
+              "tmp_user_stats.userId",
+              "IFNULL(user_stats.newValue) as oldValue",
+              "IFNULL(user_stats.oldValue + tmp_user_stats.newValue, tmp_user_stats.newValue)",
+              "SYSDATETIME() AS updatedAt"
+            ])
+            .table("user_stats")
+            .rightJoin("tmp_user_stats", "user_stats.userId", "tmp_user_stats.userId")
+        );
+
+        return tx;
+      })
+      .catch((e) => console.error(e));
   }
 }
