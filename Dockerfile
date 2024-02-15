@@ -19,7 +19,7 @@ ARG NODE_VERSION=16.13.1
 FROM node:${NODE_VERSION}-alpine as build
 WORKDIR /opt
 
-COPY package.json yarn.lock tsconfig.json tsconfig.compile.json .barrelsby.json knexfile.js processes.config.js ./
+COPY package.json yarn.lock tsconfig.json tsconfig.compile.json .barrelsby.json knexfile.js processes.config.js jwt_private.pem jwt_public.pem ./
 
 RUN yarn install --pure-lockfile
 
@@ -43,7 +43,5 @@ RUN yarn install --pure-lockfile --production
 COPY processes.config.js .
 
 EXPOSE 8081
-ENV PORT 8081
-ENV NODE_ENV production
 
-CMD ["pm2-runtime", "start", "processes.config.js", "--env", "production"]
+CMD ["pm2-runtime", "start", "processes.config.js"]

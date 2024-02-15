@@ -57,3 +57,5 @@ ecosystem.config.js
 .env
 
 db
+
+*.pem

@@ -3,31 +3,29 @@ import { Knex } from "knex";
 export const SCOPE_ID = "stats";
 
 export enum StatType {
-  Shares
+  Shares = "shares"
 }
 
-export type Stat = {
+export type TStat = {
   type: StatType;
   source: string;
-  userId: string;
-  oldValue: string;
-  newValue: string;
-  createdAt: string;
-  updatedAt: string;
+  id: string;
+  old_value: number;
+  new_value: number;
+  created_at: string;
+  updated_at: string;
 };
 
-export type StatModel = Stat;
+export const StatModel = (knex: Knex) => knex<TStat>("stats");
 
-export const StatModel = (knex: Knex) => knex<StatModel>("Stats");
-
-StatModel.getDefault = (type: StatType): Stat => {
+StatModel.getDefault = (type: StatType): TStat => {
   return {
     type,
     source: "",
-    userId: "",
-    oldValue: "",
-    newValue: "",
-    createdAt: "",
-    updatedAt: ""
+    id: "",
+    old_value: 0,
+    new_value: 0,
+    created_at: "",
+    updated_at: ""
   };
 };

@@ -1,9 +1,9 @@
-import { Avatar } from "./../../models/missions/common/avatar.model";
-import { Land } from "./../../models/missions/common/land.model";
-import { ONCHAIN_DATA_SOURCE } from "../../datasources/onchain";
 import { Inject, Injectable, Logger } from "@tsed/common";
 import { PlatformCache } from "@tsed/platform-cache";
 import { BigNumber } from "ethers";
+import { ONCHAIN_DATA_SOURCE } from "../../datasources/onchain";
+import { Avatar } from "./../../models/missions/common/avatar.model";
+import { Land } from "./../../models/missions/common/land.model";
 
 export enum RARITY {
   COMMON,
@@ -198,7 +198,8 @@ export class OnChainRepository {
     while (true) {
       try {
         const data = await this.contracts["CM"].allTokensPaginate(start, start + 100);
-        this.logger.debug({ event: "avatars.allTokensPaginate", step: start, data });
+
+        // this.logger.debug({ event: "avatars.allTokensPaginate", step: start, data });
 
         allTokens.push(
           ...data[0].map((id: BigNumber, index: number) => ({

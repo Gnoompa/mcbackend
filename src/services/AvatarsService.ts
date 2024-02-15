@@ -35,7 +35,9 @@ export class AvatarsService {
   }
 
   async syncOnChainToPostgres() {
-    const allAvatars = await this.onChainRepo.getAllAvatars();    
+    const allAvatars = await this.onChainRepo.getAllAvatars();
+
+    console.log(allAvatars)
 
     await this.avatarsRepo.upsertAvatarsData(allAvatars);
 

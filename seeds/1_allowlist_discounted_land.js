@@ -6,7 +6,7 @@ export async function seed(knex) {
     .del()
     .then(() =>
       knex("allowlists").insert(
-        parse(fs.readFileSync(__dirname + "/1_allowlist_discounted_land.csv"), {
+        parse(fs.readFileSync(__dirname + `/1_allowlist_discounted_land_${process.env.NETWORK}.csv`), {
           columns: true,
           skip_empty_lines: true
         })

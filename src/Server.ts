@@ -13,6 +13,7 @@ import { config } from "./config";
 import * as allowlist from "./controllers/allowlist/allowlists";
 import * as missions from "./controllers/missions";
 import * as profile from "./controllers/profile";
+import * as stats from "./controllers/stats/stats";
 import { AvatarsService } from "./services/AvatarsService";
 import { StatsService } from "./services/StatsService";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -26,7 +27,8 @@ import { StatsService } from "./services/StatsService";
   mount: {
     "/missions": [...Object.values(missions)],
     "/profile": [...Object.values(profile)],
-    "/allowlist": [...Object.values(allowlist)]
+    "/allowlist": [...Object.values(allowlist)],
+    "/stats": [...Object.values(stats)]
   },
   middlewares: [
     cors(),

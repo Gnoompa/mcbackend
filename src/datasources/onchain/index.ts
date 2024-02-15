@@ -1,17 +1,16 @@
-import { ONCHAIN_CONFIG } from "../../config/contracts";
-import { CONTRACTS } from "../../config/contracts";
+import { JsonRpcProvider } from "@ethersproject/providers";
 import { Configuration, registerProvider } from "@tsed/di";
 import { Logger } from "@tsed/logger";
 import { ethers } from "ethers";
-import { JsonRpcProvider } from "@ethersproject/providers";
+import { CONTRACTS, ONCHAIN_CONFIG } from "../../config/contracts";
 
-import MissionManagerAtrifact from "./artifacts/MissionManager.json";
-import GameManagerAtrifact from "./artifacts/GameManager.json";
 import CollectionManagerAtrifact from "./artifacts/CollectionManager.json";
+import CRYOAtrifact from "./artifacts/CryochamberManager.json";
+import GameManagerAtrifact from "./artifacts/GameManager.json";
+import GEARSAtrifact from "./artifacts/Gears.json";
 import MCAtrifact from "./artifacts/MC.json";
 import MCLNAtrifact from "./artifacts/MartianColonists.json";
-import CRYOAtrifact from "./artifacts/CryochamberManager.json";
-import GEARSAtrifact from "./artifacts/Gears.json";
+import MissionManagerAtrifact from "./artifacts/MissionManager.json";
 
 export const ONCHAIN_DATA_SOURCE = Symbol.for("OnChainDataSource");
 export type ONCHAIN_DATA_SOURCE = { [K in CONTRACTS]: ethers.Contract };
@@ -23,6 +22,8 @@ registerProvider<ONCHAIN_DATA_SOURCE>({
   useFactory(configuration: Configuration): ONCHAIN_DATA_SOURCE {
     const onchain_config = configuration.get<ONCHAIN_CONFIG>("onchain");
     const network_config = onchain_config.networks[onchain_config.current_network];
+
+    console.log(network_config)
 
     const provider = new JsonRpcProvider(network_config.rpc);
 

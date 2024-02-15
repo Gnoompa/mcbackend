@@ -1,5 +1,5 @@
-import { Profile, ProfileModel } from "./../../models/profiles/model";
 import { POSTGRES_DATA_SOURCE } from "../../datasources/Postgres";
+import { Profile, ProfileModel } from "./../../models/profiles/model";
 
 import { Configuration, Inject, Injectable } from "@tsed/common";
 

@@ -81,7 +81,10 @@ export const onchain_config: ONCHAIN_CONFIG = {
       tokenName: "pCLNY"
     },
     polygon: {
-      rpc: "https://polygon-rpc.com",
+      rpc:
+        process.env.RPC_POLYGON_URL && process.env.RPC_POLYGON_KEY
+          ? `${process.env.RPC_POLYGON_URL}${process.env.RPC_POLYGON_KEY}`
+          : "https://polygon-rpc.com",
       contracts: {
         MSN: process.env.MISSION_MANAGER!,
         GM: process.env.GAME_MANAGER!,
